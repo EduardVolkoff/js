@@ -22,8 +22,8 @@ class Matrix{
 
     Sum(sourceMatrix){
         this.innerMatrix.forEach((r, rId) =>{
-            r.forEach((v, cId) => {
-                this.innerMatrix[rId][cId] = v + sourceMatrix.innerMatrix[rId][cId];
+            r.forEach((_, cId) => {
+                this.innerMatrix[rId][cId] += sourceMatrix.innerMatrix[rId][cId];
             }
         )});
     }
@@ -32,7 +32,7 @@ class Matrix{
         let result = new Array(this.innerMatrix.length).fill(0).map(row => new Array(sourceMatrix.innerMatrix[0].length).fill(0));
 
         result = result.map((row, i) => {
-            return row.map((_val, j) => {
+            return row.map((_, j) => {
                 return this.innerMatrix[i].reduce((sum, elm, k) => sum + (elm*sourceMatrix.innerMatrix[k][j]),0)
             })
         })
